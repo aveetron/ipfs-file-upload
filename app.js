@@ -18,8 +18,11 @@ async function storeFiles (file_path) {
 
 app.post("/api/v1/file/upload/",async (req, res, next) => {
     try{
-        console.log(req.body.file_path)
-        file_cid = await storeFiles(req.body.file_path)
+        for(let i=0;i<5;i++){
+            console.log(i)
+            console.log(req.body.file_path)
+            file_cid = await storeFiles(req.body.file_path)
+        }
         return await res.json({data: file_cid})
     }
     catch(error){
